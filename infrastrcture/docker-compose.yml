@@ -1,0 +1,14 @@
+version: "3.8"
+name: "Video Palace Infrastructure"
+
+services:
+  videopalace_mongodb:
+    image: mongo
+    container_name: videopalace_mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodbdata:/data/db
+
+volumes:
+  mongodbdata:
