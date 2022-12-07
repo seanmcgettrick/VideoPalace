@@ -1,4 +1,6 @@
-﻿using VideoPalace.Catalog.Service.Entities;
+﻿using MassTransit;
+using VideoPalace.Catalog.Events;
+using VideoPalace.Catalog.Service.Entities;
 using VideoPalace.Catalog.Service.Services;
 using VideoPalace.Common.Contracts;
 
@@ -16,7 +18,7 @@ public class SeedMovieCatalog : IHostedService
         using var scope = _serviceScopeFactory.CreateScope();
 
         var repository = scope.ServiceProvider.GetRequiredService<IRepository<Movie>>();
-        var inventoryService = scope.ServiceProvider.GetRequiredService<IInventoryService>();
+        var publishEndpoint = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
 
         var existingMovies = await repository.GetAllAsync();
 
@@ -24,7 +26,7 @@ public class SeedMovieCatalog : IHostedService
         {
             var movies = new List<Movie>
             {
-                new Movie
+                new()
                 {
                     Id = Guid.NewGuid(),
                     Title = "Ghostbusters",
@@ -34,7 +36,7 @@ public class SeedMovieCatalog : IHostedService
                     ReleaseYear = 1984,
                     CreatedDate = DateTimeOffset.UtcNow
                 },
-                new Movie
+                new()
                 {
                     Id = Guid.NewGuid(),
                     Title = "Avengers: Endgame",
@@ -44,7 +46,7 @@ public class SeedMovieCatalog : IHostedService
                     ReleaseYear = 2019,
                     CreatedDate = DateTimeOffset.UtcNow
                 },
-                new Movie
+                new()
                 {
                     Id = Guid.NewGuid(),
                     Title = "Close Encounters of the Third Kind",
@@ -58,7 +60,8 @@ public class SeedMovieCatalog : IHostedService
 
             await repository.BulkCreateAsync(movies);
 
-            await inventoryService.BulkAddMovieToInventoryAsync(movies);
+            foreach (var movie in movies)
+                await publishEndpoint.Publish(new CatalogMovieAdded(movie.Id, movie.Title), cancellationToken);
         }
     }
 

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoPalace.Common", "src\V
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Inventory", "Inventory", "{EB03F70B-E058-45BF-81AC-9F4AD80760E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPalace.Inventory.Service", "src\VideoPalace.Inventory.Service\VideoPalace.Inventory.Service.csproj", "{C341CFE7-FD94-4FD1-9083-C68C997EA788}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoPalace.Inventory.Service", "src\VideoPalace.Inventory.Service\VideoPalace.Inventory.Service.csproj", "{C341CFE7-FD94-4FD1-9083-C68C997EA788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoPalace.Catalog.Events", "src\VideoPalace.Catalog.Events\VideoPalace.Catalog.Events.csproj", "{A7C31936-3A19-40A6-9693-4F78C342EEC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{C341CFE7-FD94-4FD1-9083-C68C997EA788}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C341CFE7-FD94-4FD1-9083-C68C997EA788}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C341CFE7-FD94-4FD1-9083-C68C997EA788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C31936-3A19-40A6-9693-4F78C342EEC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C31936-3A19-40A6-9693-4F78C342EEC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C31936-3A19-40A6-9693-4F78C342EEC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C31936-3A19-40A6-9693-4F78C342EEC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,6 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0DF461B9-CD7D-4C0B-9612-9A75B99609A0} = {F0115EF6-DB61-4C57-B77F-7C86E675467F}
 		{C341CFE7-FD94-4FD1-9083-C68C997EA788} = {EB03F70B-E058-45BF-81AC-9F4AD80760E6}
+		{A7C31936-3A19-40A6-9693-4F78C342EEC4} = {F0115EF6-DB61-4C57-B77F-7C86E675467F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1719C052-8157-4172-B506-88E7F6B5B95A}

@@ -9,6 +9,16 @@ services:
       - 27017:27017
     volumes:
       - mongodbdata:/data/db
+  videopalace_rabbitmq:
+    image: rabbitmq:management
+    container_name: videopalace_rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+    hostname: videopalace_rabbitmq
 
 volumes:
   mongodbdata:
+  rabbitmqdata:

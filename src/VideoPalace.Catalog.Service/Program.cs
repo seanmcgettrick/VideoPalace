@@ -19,6 +19,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddMassTransitRabbitMq(builder.Configuration, serviceSettings!.ServiceName);
+
 builder.Services
     .AddMongoDb(builder.Configuration, serviceSettings!.ServiceName)
     .AddMongoRepository<Movie>("movies");

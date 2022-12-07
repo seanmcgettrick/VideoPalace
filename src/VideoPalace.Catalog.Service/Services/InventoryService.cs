@@ -15,8 +15,8 @@ public class InventoryService : IInventoryService
         var requestJson =
             $$"""
             {
-              "catalogId": "{{ movie.Id}} ",
-              "title": "{{ movie.Title}} ",
+              "catalogId": "{{movie.Id}}",
+              "title": "{{movie.Title}}",
               "totalQuantity": 1
             }
             """ ;

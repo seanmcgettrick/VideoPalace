@@ -14,9 +14,11 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Consumers\" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VideoPalace.Catalog.Events\VideoPalace.Catalog.Events.csproj" />
     <ProjectReference Include="..\VideoPalace.Common\VideoPalace.Common.csproj" />
   </ItemGroup>
 

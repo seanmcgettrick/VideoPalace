@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Mvc;
+using VideoPalace.Catalog.Events;
 using VideoPalace.Catalog.Service.Entities;
 using VideoPalace.Catalog.Service.Entities.Dtos;
 using VideoPalace.Catalog.Service.Extensions;
@@ -12,12 +14,12 @@ namespace VideoPalace.Catalog.Service.Controllers;
 public class CatalogController : ControllerBase
 {
     private readonly IRepository<Movie> _movieRepository;
-    private readonly IInventoryService _inventoryService;
+    private readonly IPublishEndpoint _publishEndpoint;
 
-    public CatalogController(IRepository<Movie> movieRepository, IInventoryService inventoryService)
+    public CatalogController(IRepository<Movie> movieRepository, IPublishEndpoint publishEndpoint)
     {
         _movieRepository = movieRepository;
-        _inventoryService = inventoryService;
+        _publishEndpoint = publishEndpoint;
     }
 
     [HttpGet]
@@ -46,7 +48,7 @@ public class CatalogController : ControllerBase
 
         await _movieRepository.CreateAsync(movie);
 
-        await _inventoryService.AddMovieToInventoryAsync(movie);
+        await _publishEndpoint.Publish(new CatalogMovieAdded(movie.Id, movie.Title));
 
         return CreatedAtRoute(nameof(GetMovie), new { id = movie.Id }, movie);
     }
