@@ -195,11 +195,11 @@ public record CatalogMovieAdded(Guid CatalogId, string Title);
 
 Add a new project reference in the Catalog and Inventory service projects to the Catalog events library:
 
-![Inventory Project References](assets/catalogeventreference.png "Inventory Project References)
+![Inventory Project References](assets/catalogeventreference.png "Inventory Project References")
 
 #### Create The Event Consumer
 
-In the Inventory service project, create a folder named **Consumers** and a class named **CatalogMovieAddedConsumer**. Again, I will not paste the entirety of the code here, but it is available on GitHub [here](https://github.com/seanmcgettrick/VideoPalace/blob/01/src/VideoPalace.Inventory.Service/Consumers/CatalogMovieAddedConsumer.cs). The code should be self-explanatory. As mentioned earlier, the consumer will implement **IConsumer<T>** where T is of type **CatalogMovieAdded** from the new Catalog events library. The consumer will pull the Catalog Id and Title of the movie and then check to make sure it is not already in the Inventory database. If it is not, the consumer will create a new Video and add it to the database.
+In the Inventory service project, create a folder named **Consumers** and a class named **CatalogMovieAddedConsumer**. Again, I will not paste the entirety of the code in this article, but it is available on GitHub [here](https://github.com/seanmcgettrick/VideoPalace/blob/01/src/VideoPalace.Inventory.Service/Consumers/CatalogMovieAddedConsumer.cs). The code should be self-explanatory. As mentioned earlier, the consumer will implement **IConsumer<T>** where T is of type **CatalogMovieAdded** from the new Catalog events library. The consumer will pull the Catalog Id and Title of the movie and then check to make sure it is not already in the Inventory database. If it is not, the consumer will create a new Video and add it to the database.
 
 #### Remove Calls to The Inventory Service
 
