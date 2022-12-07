@@ -234,6 +234,8 @@ foreach (var movie in movies)
     await publishEndpoint.Publish(new CatalogMovieAdded(movie.Id, movie.Title), cancellationToken);
 ```
 
+You can now safely delete the **Services** folder in the Catalog project and remove the service registration from Catalog's **Program.cs** file.
+
 With that, it is now time to test the new messaging pattern, but first, let's examine how MassTransit handles configuring RabbitMQ for us.
 
 ### RabbitMQ Configuration
