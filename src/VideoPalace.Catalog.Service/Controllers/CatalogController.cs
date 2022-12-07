@@ -4,7 +4,6 @@ using VideoPalace.Catalog.Events;
 using VideoPalace.Catalog.Service.Entities;
 using VideoPalace.Catalog.Service.Entities.Dtos;
 using VideoPalace.Catalog.Service.Extensions;
-using VideoPalace.Catalog.Service.Services;
 using VideoPalace.Common.Contracts;
 
 namespace VideoPalace.Catalog.Service.Controllers;
