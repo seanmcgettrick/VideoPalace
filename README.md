@@ -177,7 +177,7 @@ config.ConfigureEndpoints(context, new KebabCaseEndpointNameFormatter(prefixName
 config.UseMessageRetry(rc => rc.Interval(3, TimeSpan.FromSeconds(5)));
 ```
 
-The first line tells MassTransit where our RabbitMQ instance is running. The next line tells MassTransit how to format the queue and exchange names when they are created. This is another great thing about MassTransit as it takes care of configuring all of this for us and nothing has to be manually created in RabbitMQ. Finally, the last line sets a default retry policy. In our case, it is telling RabbitMQ to try to deliver the message three times, waiting five seconds between each attempt.
+The first line tells MassTransit where our RabbitMQ instance is running. The next line tells MassTransit how to format the queue and exchange names when they are created. This is another great thing about MassTransit as it takes care of configuring all of this for us and nothing has to be manually created in RabbitMQ. Finally, the last line sets a default retry policy. In our case, it is telling RabbitMQ to try to deliver the message three times, waiting five seconds between each attempt. This retry policy is configured at the message bus level, but further policies can be defined on a per-consumer basis giving you greater flexibiltiy in handling transient errors. To handle more serious, long lasting errors, message redelivery policies can be configured.
 
 The last thing we need to do is go into the **Program.cs** file of each service and call the new extension method. Place this before the MongoDB registration:
 
