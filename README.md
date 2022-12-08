@@ -2,7 +2,7 @@
 
 ## Overview
 
-[MassTransit](https://masstransit-project.com/) is an open-source, distributed application framework for .NET which allows developers to easily create systems that leverage asynchronous, message-based communication patterns. At present it supports RabbitMQ, Azure Service Bus, SQS, and in-memory transports. In this first article, we will go over how to take an existing system that uses synchronous communication and migrate it to make use of asynchronous messaging by leveraging MassTransit. In subsequent articles we will build our system out to include more services and implement a saga by using MassTransit’s built in state machine support.
+[MassTransit](https://masstransit-project.com/) is an open-source, distributed application framework for .NET which allows developers to easily create systems that leverage asynchronous, message-based communication patterns. At present it supports RabbitMQ, Azure Service Bus, SQS, and in-memory transports. In this first article, we will go over how to take an existing system that uses synchronous communication and migrate it to make use of asynchronous messaging by leveraging MassTransit. In subsequent articles we will build our system out to include more services and implement a [saga](https://microservices.io/patterns/data/saga.html) by using [MassTransit’s built in state machine support](https://masstransit-project.com/usage/sagas/).
 
 ## Scenario
 
@@ -301,4 +301,4 @@ Now start up the Inventory service. You'll see the messages being received as so
 
 With the move to asynchronous messaging, Video Palace employees can now safely add new movies to their catalog and not have to worry about adding them into their rental inventory if the service happens to go offline or suffers any other sort of interruption. This was made possible by moving to an asynchronous messaging communication pattern which MassTransit made pain-free to implement.
 
-In the next article, we will take a biref segue to show how MassTransit easily allows you to switch between RabbitMQ locally and Azure Service Bus when deployed to the cloud. After that we'll implement the remaining services and introduce a [state machine](https://masstransit-project.com/usage/sagas/) to orchestrate a [Saga](https://microservices.io/patterns/data/saga.html) which will handle the video rental process.
+In the next article, we will take a biref segue to show how MassTransit easily allows you to switch between RabbitMQ locally and Azure Service Bus when deployed to the cloud. After that we'll implement the remaining services and introduce a [state machine](https://masstransit-project.com/usage/sagas/) to orchestrate a [saga](https://microservices.io/patterns/data/saga.html) which will handle the video rental process.
